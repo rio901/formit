@@ -145,7 +145,9 @@ class SurveyController extends Controller
     public function showFreeComment($surveyId)
     {
         // 指定された調査に対する回答のフリーコメントを取得します
-        $responseAnswers = response_answers::where('survey_id', $surveyId)->get();
+        $responseAnswers = response_answers::where('survey_id', $surveyId)
+                                        ->whereNotNull('response')
+                                        ->get();
 
         $questionTitle = surveys::findOrFail($surveyId)->free_comment;
 
