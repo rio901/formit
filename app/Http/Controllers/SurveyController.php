@@ -392,7 +392,7 @@ public function storeAnswers(Request $request)
     ]);
 
     // ラジオボタンまたはチェックボックスの場合、オプションのデータを保存
-    if (isset($options[$id]) && is_array($options[$id]['option_id'])) {
+    if (isset($options[$id]['option_id']) && is_array($options[$id]['option_id'])) {
         foreach ($options[$id]['option_id'] as $index => $optionNum) {
             $newAnswers->options()->create([
                 'label' => $options[$id]['label'][$index],
